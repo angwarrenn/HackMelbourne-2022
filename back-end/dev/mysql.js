@@ -1,7 +1,7 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 // Create connection
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "tcp://0.tcp.au.ngrok.io",
   port: "14112",
   user: "root",
@@ -10,9 +10,20 @@ const db = mysql.createConnection({
 });
 
 // Connect to MySQL
-db.connect((err) => {
+connection.connect((err) => {
   if (err) {
     throw err;
   }
   console.log("MySql Connected");
 });
+
+let sql = "SELECT * FROM admin";
+
+connection.query(sql, (error, results, fields) => {
+  if (error) {
+    return console.error(error.message);
+  }
+  console.log(results);
+});
+
+connection.end();
