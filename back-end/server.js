@@ -1,12 +1,13 @@
+// environment variables library
 require("dotenv").config();
 
+// setup express app and middlewares
 const express = require("express");
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// create connection
+// initialize mysql connection
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: process.env.MYSQL_HOST,
@@ -15,8 +16,6 @@ const connection = mysql.createConnection({
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
 });
-
-// connect to mysql
 connection.connect((err) => {
   if (err) {
     throw err;
@@ -24,6 +23,7 @@ connection.connect((err) => {
   console.log("MySql Connected...");
 });
 
+// bcrypt library
 const bcrypt = require("bcrypt");
 
 app.post("/login", (req, res) => {
@@ -35,6 +35,7 @@ app.post("/login", (req, res) => {
   connection.query(sql, (err, result) => {
     if (err) {
       res.json({ success: false, error: err });
+      return;
     }
 
     const hash = result[0].password;
@@ -42,6 +43,7 @@ app.post("/login", (req, res) => {
     bcrypt.compare(password, hash, (err, result) => {
       if (err) {
         res.json({ success: false, error: err });
+        return;
       }
 
       if (result === true) {
@@ -61,6 +63,7 @@ app.post("/signup", (req, res) => {
     (err, hash) => {
       if (err) {
         res.json({ success: false, error: err });
+        return;
       }
 
       const sql = `INSERT INTO user (email, password) VALUES ('${email}','${hash}')`;
@@ -68,6 +71,7 @@ app.post("/signup", (req, res) => {
       connection.query(sql, (err) => {
         if (err) {
           res.json({ success: false, error: err });
+          return;
         }
 
         res.json({ success: true });
