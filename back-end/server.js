@@ -27,7 +27,28 @@ connection.connect((err) => {
 const bcrypt = require("bcrypt");
 
 app.post("/login", (req, res) => {
-  res.json(req.body);
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const sql = `SELECT password FROM user WHERE email='${email}'`;
+
+  connection.query(sql, (err, result) => {
+    if (err) {
+      res.json({ success: false, error: err });
+    }
+
+    const hash = result[0].password;
+
+    bcrypt.compare(password, hash, (err, result) => {
+      if (err) {
+        res.json({ success: false, error: err });
+      }
+
+      if (result === true) {
+        res.json({ success: true });
+      }
+    });
+  });
 });
 
 app.post("/signup", (req, res) => {
