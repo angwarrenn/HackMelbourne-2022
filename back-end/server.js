@@ -15,6 +15,10 @@ app.post("/test-post", (req, res) => {
   res.json(req.body);
 });
 
+app.post("/login", (req, res) => {
+  res.json(req.body);
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`);
 });
