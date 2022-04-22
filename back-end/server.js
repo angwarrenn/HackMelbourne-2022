@@ -48,6 +48,8 @@ app.post("/login", (req, res) => {
 
       if (result === true) {
         res.json({ success: true });
+      } else {
+        res.json({ success: false });
       }
     });
   });
@@ -80,6 +82,10 @@ app.post("/signup", (req, res) => {
   );
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, (err) => {
+  if (err) {
+    throw err;
+  }
+
   console.log(`listening on port ${process.env.PORT}`);
 });
