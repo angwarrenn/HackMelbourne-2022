@@ -88,11 +88,15 @@ app.post("/create-event", (req, res) => {
 
   const email = req.body.email;
 
+  const sql = `SELECT password FROM user WHERE email='${email}'`;
+
   res.json({ success: true });
 });
 
 app.post("/retrieve-events", (req, res) => {
   const email = req.body.email;
+
+  const sql = `SELECT password FROM user WHERE email='${email}'`;
 
   res.json({ success: true });
 });
