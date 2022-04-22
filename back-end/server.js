@@ -19,6 +19,10 @@ app.post("/login", (req, res) => {
   res.json(req.body);
 });
 
+app.post("/signup", (req, res) => {
+  res.json(req.body);
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`);
 });
