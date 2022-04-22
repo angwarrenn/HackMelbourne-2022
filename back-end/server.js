@@ -82,6 +82,21 @@ app.post("/signup", (req, res) => {
   );
 });
 
+app.post("/create-event", (req, res) => {
+  const name = req.body.name;
+  const description = req.body.description;
+
+  const email = req.body.email;
+
+  res.json({ success: true });
+});
+
+app.post("/retrieve-events", (req, res) => {
+  const email = req.body.email;
+
+  res.json({ success: true });
+});
+
 app.listen(process.env.PORT, (err) => {
   if (err) {
     throw err;
