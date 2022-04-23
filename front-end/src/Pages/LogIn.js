@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
-import { Navigate } from "react-router-dom";
 
-import loghero from "./loginhero.png";
+import logHero from "./loginhero.png";
 
-function LogIn({ email, setEmail }) {
+function LogIn({ setEmail }) {
   const url = "https://a7d5-125-63-30-143.au.ngrok.io/login";
   const [data, setData] = useState({
     email: "",
@@ -22,7 +22,6 @@ function LogIn({ email, setEmail }) {
       } else {
         setEmail(null);
       }
-      console.log(res.data);
     });
   }
 
@@ -32,6 +31,7 @@ function LogIn({ email, setEmail }) {
     setData(newdata);
     console.log(newdata);
   };
+
   return (
     <div>
       <div className="login">
@@ -54,10 +54,12 @@ function LogIn({ email, setEmail }) {
             type="password"
           ></input>
           <button className="buttonsubmit">Submit</button>
-          <p className='gosignup'>Don't have an account? Sign up now!</p>
+          <p className="gosignup">
+            Don't have an account? <Link to="/signup">Sign up</Link> now!
+          </p>
         </form>
       </div>
-      <img src={loghero} alt="Login Hero" className="herolog"></img>
+      <img src={logHero} alt="Login Hero" className="herolog"></img>
     </div>
   );
 }
