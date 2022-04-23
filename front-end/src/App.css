@@ -184,6 +184,13 @@ nav li a:focus {
   border-radius: 20%;
 }
 
+.logowhen {
+  padding: 5px;
+  height: 100px;
+  margin-left: 22px;
+  border-radius: 20%;
+}
+
 .quotebox {
   margin: 20px;
   padding: 15px;
