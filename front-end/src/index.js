@@ -6,7 +6,7 @@ import Calendar from "./Pages/Calendar";
 import Team from "./Pages/Team";
 import NoPage from "./Pages/NoPage";
 import Settings from "./Pages/Settings";
-import LogIn from "./Pages/LogIn";
+import LogIn from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 
 import "./App.css";
