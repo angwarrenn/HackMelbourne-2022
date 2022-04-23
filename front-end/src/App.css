@@ -9,6 +9,11 @@
 h1 {font-size: 40px;}
 h3 {font-size: 23px; 
   display: inline;}
+h2 {font-size: 15px; 
+  padding-right: 15px;
+  vertical-align: middle;
+  margin-bottom: 65px;
+  display: inline-block;}
 p {font-size: 14px;}
 
 
@@ -137,6 +142,13 @@ nav li a:focus {
   border-radius: 20%;
   display: inline;
   float: left;
+}
+
+.frensavatar {
+  padding: 5px;
+  width: 55px;
+  height: 60px;
+  border-radius: 20%;
 }
 
 .quotebox {
@@ -291,7 +303,7 @@ nav li a:focus {
     right: 0;
     
     margin: 20px;
-    padding: 15px;
+    padding: 30px;
   
     width: 53%;
     height: 650px;
@@ -402,14 +414,19 @@ nav li a:focus {
   border: 3px solid blue;
 }
 
-th, td {
+th {
   padding: 2px;
 }
 
 td {
+  padding: 1.5px;
   border-top: 1px solid black;
   width: 100px;
   text-align: center;
+}
+
+table {
+  margin: 5px;
 }
 
 .grid-container{

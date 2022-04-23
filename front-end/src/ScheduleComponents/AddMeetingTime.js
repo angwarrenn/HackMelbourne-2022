@@ -83,18 +83,18 @@ export default function AddMeetTime() {
     let arr = [];
 
     for (let i = 0; i < 24; i++) {
-      const style = { backgroundColor: "green", opacity: 0.1 * count[i] };
+      const style = { backgroundColor: "orange", opacity: 0.1 * count[i] };
 
       arr.push(
         <tr>
-          <td>{i}</td>
+          <td>{i}:00</td>
           <td
-            style={{ backgroundColor: "green", opacity: 0.5 * self[i] }}
+            style={{ backgroundColor: "orange", opacity: 0.5 * self[i] }}
             onClick={() => {
               handler(i);
             }}
           ></td>
-          <td>{i}</td>
+          <td>{i}:00</td>
           <td style={style}></td>
         </tr>
       );
@@ -108,7 +108,7 @@ export default function AddMeetTime() {
       <table>
         <tr>
           <th colSpan="2">You</th>
-          <th>Group</th>
+          <th colSpan="4">Group</th>
         </tr>
         {loop()}
       </table>
