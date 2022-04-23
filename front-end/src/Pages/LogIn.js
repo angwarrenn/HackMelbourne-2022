@@ -16,14 +16,14 @@ function LogIn({ email, setEmail }) {
     Axios.post(url, {
       email: data.email,
       password: data.password,
-    })
-      .then((res) => {
-        setEmail(res.data.success);
-        console.log(res.data);
-      })
-      .then(() => {
-        return <Navigate to="/dashboard"></Navigate>;
-      });
+    }).then((res) => {
+      if (res.data.success == true) {
+        setEmail(data.email);
+      } else {
+        setEmail(null);
+      }
+      console.log(res.data);
+    });
   }
 
   const handle = (e) => {
