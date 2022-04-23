@@ -18,29 +18,30 @@ export default function App() {
   const [responses, setResponses] = useState({});
   const [movieInput, setMovieInput] = useState("");
 
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("a");
 
   const [socket, setSocket] = useState(null);
 
-  useEffect(() => {
-    console.log("useEffect called");
+  // useEffect(() => {
+  //   console.log("useEffect called");
+
 
     const ENDPOINT = process.env.REACT_APP_SERVER;
     const socket = io(ENDPOINT, {
       query: { id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
     });
 
-    if (socket) {
-      setSocket(socket);
+  //   if (socket) {
+  //     setSocket(socket);
 
-      socket.on("update", (data) => {
-        console.log("update");
-        console.log(data);
+  //     socket.on("update", (data) => {
+  //       console.log("update");
+  //       console.log(data);
 
-        setResponses(data);
-      });
-    }
-  }, []);
+  //       setResponses(data);
+  //     });
+  //   }
+  // }, []);
 
   return (
     <BrowserRouter>

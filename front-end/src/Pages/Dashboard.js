@@ -13,12 +13,14 @@ import {
 const Home = () => {
     return(
         <Fragment>
-            <DashboardHeader />
-            <QuoteWidget />
-            <CurrentProjects />
-            <FriendsWidget />
-            <NotesWidget />
-            <TodayWidget />
+            <div className="grid-container">
+                <DashboardHeader />
+                <QuoteWidget />
+                <CurrentProjects />
+                <FriendsWidget />
+                <NotesWidget />
+                <TodayWidget />
+            </div>
         </Fragment>
     )
 }
