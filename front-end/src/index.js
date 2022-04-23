@@ -18,7 +18,7 @@ export default function App() {
   const [responses, setResponses] = useState({});
   const [movieInput, setMovieInput] = useState("");
 
-  const [email, setEmail] = useState("a");
+  const [email, setEmail] = useState(null);
 
   const [socket, setSocket] = useState(null);
 
