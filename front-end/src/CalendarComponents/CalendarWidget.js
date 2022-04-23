@@ -1,5 +1,7 @@
 export default function CalendarWidget(){
     return (
-        <h2>Calendar!</h2>
+        <div className="calendarwidget">
+            <h4>Calendar!</h4>
+        </div>
     )
 }

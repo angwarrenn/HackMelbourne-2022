@@ -11,7 +11,6 @@ import {
 const Calendar = () => {
     return (
       <Fragment>
-        <h1>Calendar</h1>
         <CalendarWidget />
         <EventDetails />
         <TeamMembers />

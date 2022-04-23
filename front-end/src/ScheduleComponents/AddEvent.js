@@ -1,8 +1,7 @@
 export default function AddEvent(){
     return(
-        <div>
-            <h2>Add Event Name</h2>
-            <h2>Add Event Details</h2>
+        <div className="addevent">
+            <h4>Add Event Name</h4>
         </div>
         
     )

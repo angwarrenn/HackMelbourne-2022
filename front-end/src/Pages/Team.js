@@ -3,14 +3,15 @@ import { Fragment } from 'react';
 // importing components
 import {
   EventWidget,
+  EventDets,
   ContactWidget,
 } from '../ScheduleComponents/ScheduleIndex'
 
 const Team = () => {
     return(
       <Fragment>
-        <h1>Add Schedule</h1>
         <EventWidget />
+        <EventDets />
         <ContactWidget />
       </Fragment>
     )

@@ -1,8 +1,10 @@
 export default function QuoteWidget(){
     return(
         <div className="quotebox">
-            <p>“I'm Elle Woods and this is Bruiser Woods and we're both Gemini vegetarians.”</p>
-            <p>- Elle Woods (Legally Blonde)</p>
+            <h4>Quote of the Day</h4>
+            <br></br>
+            <p className="quote">“Oh, I like your outfit, too, except when I dress up as a frigid b*tch, I try not to look so constipated.”</p>
+            <p className="quoteauthor">- Elle Woods (Legally Blonde)</p>
         </div>
         
     )

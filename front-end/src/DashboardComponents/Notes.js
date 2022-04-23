@@ -1,5 +1,7 @@
 export default function NotesWidget(){
     return (
-        <h2>Notes</h2>
+        <div className="noteswidget">
+            <h4>Notes</h4>
+        </div>
     )
 }

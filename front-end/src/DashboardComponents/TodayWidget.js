@@ -6,9 +6,8 @@ import {
 export default function TodayWidget(){
     return (
         <div className="todaybar">
-            <h2>Today</h2>
+            <h3>Today</h3>
             <TodaySched />
-            <h2>To-Do</h2>
             <ToDo />
         </div>
     );
