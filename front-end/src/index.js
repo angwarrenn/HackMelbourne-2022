@@ -9,6 +9,8 @@ import NoPage from "./Pages/NoPage";
 import Settings from "./Pages/Settings";
 import LogIn from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
+import Events from "./Pages/Events";
+
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
@@ -18,7 +20,7 @@ export default function App() {
   const [responses, setResponses] = useState({});
   const [movieInput, setMovieInput] = useState("");
 
-  const [email, setEmail] = useState("a");
+  const [email, setEmail] = useState(null);
 
   const [socket, setSocket] = useState(null);
 
@@ -73,6 +75,11 @@ export default function App() {
               )
             }
           />
+          <Route
+            path="event"
+            element={email ? <Events email={email}/> : <Navigate to="/login" />}
+          />
+          
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

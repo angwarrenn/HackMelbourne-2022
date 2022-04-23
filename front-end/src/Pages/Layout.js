@@ -35,6 +35,11 @@ const Layout = ({ email, setEmail }) => {
               <IoCog /> Sign Out
             </div>
           </li>
+          <li>
+            <Link to="/event">
+              <IoCog /> Event
+            </Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
