@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import '../App.css';
 
 import signhero from './signuphero.png';
 
@@ -27,6 +28,10 @@ function SignUp(){
     setData(newdata)
     console.log(newdata)
   }
+
+
+
+
   return(
     <div>
       <div className='signup'>
