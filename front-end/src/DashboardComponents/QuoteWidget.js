@@ -3,8 +3,8 @@ export default function QuoteWidget(){
         <div className="quotebox">
             <h4>Quote of the Day</h4>
             <br></br>
-            <p className="quote">“Oh, I like your outfit, too, except when I dress up as a frigid b*tch, I try not to look so constipated.”</p>
-            <p className="quoteauthor">- Elle Woods (Legally Blonde)</p>
+            <p className="quote">“For me, becoming isn’t about arriving somewhere or achieving a certain aim. I see it instead as forward motion, a means of evolving, a way to reach continuously toward a better self. The journey doesn’t end.”</p>
+            <p className="quoteauthor">- Michelle Obama</p>
         </div>
         
     )
