@@ -25,10 +25,11 @@ export default function App() {
   // useEffect(() => {
   //   console.log("useEffect called");
 
-  //   const ENDPOINT = "https://a7d5-125-63-30-143.au.ngrok.io";
-  //   const socket = io(ENDPOINT, {
-  //     query: {  id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
-  //   });
+
+    const ENDPOINT = process.env.REACT_APP_SERVER;
+    const socket = io(ENDPOINT, {
+      query: { id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
+    });
 
   //   if (socket) {
   //     setSocket(socket);
@@ -78,7 +79,16 @@ export default function App() {
               )
             }
           />
-          <Route path="signup" element={<SignUp />} />
+          <Route
+            path="signup"
+            element={
+              email ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <SignUp email={email} setEmail={setEmail} />
+              )
+            }
+          />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
