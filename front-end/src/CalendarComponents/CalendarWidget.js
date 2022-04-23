@@ -24,7 +24,7 @@ export default function CalendarWidget() {
         defaultDate={new Date()}
         defaultView="month"
         events={state.events}
-        style={{ height: "50vh" }}
+        style={{ height: "85vh" }}
       />
     </div>
   );
