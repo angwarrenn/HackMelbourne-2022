@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
 
+import { IoCloudDownload } from "react-icons/io5";
 import { EventCard } from "../ScheduleComponents/ScheduleIndex";
 
 function GetEvent({email}){
@@ -68,7 +69,9 @@ function GetEvent({email}){
   return(
     <div>
       <h3>Events:</h3>
-      <br></br><br></br>
+      <br></br>
+      <button className='download'>Download events <IoCloudDownload /></button>
+      <br></br>
       {printCard(print(text))}
     </div>
   );
