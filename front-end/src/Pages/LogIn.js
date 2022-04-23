@@ -3,7 +3,7 @@ import Axios from "axios";
 
 import loghero from "./loginhero.png";
 
-function LogIn() {
+function LogIn({ email, setEmail }) {
   const url = "https://a7d5-125-63-30-143.au.ngrok.io/login";
   const [data, setData] = useState({
     email: "",
@@ -16,7 +16,7 @@ function LogIn() {
       email: data.email,
       password: data.password,
     }).then((res) => {
-      console.log(res.data);
+      setEmail(res.data);
     });
   }
 

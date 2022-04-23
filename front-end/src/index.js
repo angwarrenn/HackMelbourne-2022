@@ -6,48 +6,53 @@ import Calendar from "./Pages/Calendar";
 import Team from "./Pages/Team";
 import NoPage from "./Pages/NoPage";
 import Settings from "./Pages/Settings";
-import LogIn from "./Pages/Login"
+import LogIn from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
 import { useState, useEffect } from "react";
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client";
 
 import "./App.css";
 
 export default function App() {
-
   const [responses, setResponses] = useState({});
-  const [movieInput, setMovieInput] = useState('');
+  const [movieInput, setMovieInput] = useState("");
+
+  const [email, setEmail] = useState(null);
 
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-      console.log("useEffect called")
+    console.log("useEffect called");
 
-      const ENDPOINT = "https://a7d5-125-63-30-143.au.ngrok.io";
-      const socket = io(ENDPOINT, {query:{"id":"9eab9fd0-4f39-4d97-88a6-3013c151c7a3"}});
+    const ENDPOINT = "https://a7d5-125-63-30-143.au.ngrok.io";
+    const socket = io(ENDPOINT, {
+      query: { id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
+    });
 
-      if (socket) {
-          setSocket(socket);
+    if (socket) {
+      setSocket(socket);
 
-          socket.on("update", data => {
-              console.log("update")
-              console.log(data)
+      socket.on("update", (data) => {
+        console.log("update");
+        console.log(data);
 
-              setResponses(data);
-          });
-      }
+        setResponses(data);
+      });
+    }
   }, []);
-
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout email={email} />}>
           <Route index element={<Dashboard />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="team" element={<Team />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="login" element={<LogIn />} />
+          <Route
+            path="login"
+            element={<LogIn email={email} set-email={setEmail} />}
+          />
           <Route path="signup" element={<SignUp />} />
           <Route path="*" element={<NoPage />} />
         </Route>
