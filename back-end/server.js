@@ -41,7 +41,11 @@ const server = app.listen(process.env.PORT, (err) => {
 
 // socket io
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
 app.set("socketio", io);
 
