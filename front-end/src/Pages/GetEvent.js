@@ -67,7 +67,7 @@ function GetEvent({email}){
 
   return(
     <div>
-      <h2>Events:</h2>
+      <h3>Events:</h3>
       <br></br><br></br>
       {printCard(print(text))}
     </div>

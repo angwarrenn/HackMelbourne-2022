@@ -35,12 +35,12 @@ function Events({ email, setEmail }) {
     console.log(newdata);
   }
 
-  return (
-    <div className="flexbox">
-      <div className="eventform">
-        <h2>Add New Event</h2>
-        <br></br>
-        <form onSubmit={(e) => submit(e)}>
+  return(
+    <div className='flexbox'>
+      <div className='eventform'>
+        <h3>Add New Event</h3>
+        <br></br><br></br>
+        <form onSubmit={(e)=> submit(e)}>
           {/* add */}
           <input
             onChange={(e) => handle(e)}
