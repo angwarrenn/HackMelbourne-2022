@@ -39,6 +39,8 @@ const server = app.listen(process.env.PORT, (err) => {
   console.log(`listening on port ${process.env.PORT}`);
 });
 
+app.use("/ics", express.static("ics"));
+
 // socket io
 const { Server } = require("socket.io");
 const io = new Server(server, {
@@ -86,6 +88,33 @@ app.post("/login", (req, res) => {
         res.json({ success: false });
       }
     });
+  });
+});
+
+const { writeFileSync } = require("fs");
+const ics = require("ics");
+
+app.post("/gen-ics", (req, res) => {
+  const uuid = req.body.uuid;
+  const data = req.body.data;
+
+  const idk = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const pls = data[i][0].split("/");
+    idk.push({
+      title: data[i][1],
+      description: data[i][2],
+      start: [parseInt(pls[2]), parseInt(pls[1]), parseInt(pls[0])],
+    });
+  }
+
+  ics.createEvents(idk, (error, value) => {
+    if (error) {
+      console.log(error);
+    }
+
+    writeFileSync(`${__dirname}/ics/${uuid}.ics`, value);
   });
 });
 
