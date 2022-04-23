@@ -37,21 +37,24 @@ function LogIn({ email, setEmail }) {
       <div className="login">
         <h1>LOGIN</h1>
         <form onSubmit={(e) => submit(e)}>
+          <p className="email">email</p>
           <input
             onChange={(e) => handle(e)}
             id="email"
             value={data.email}
-            placeholder="email"
+            placeholder="duolingowong@gmail.com"
             type="text"
           ></input>
+          <p className="password">password</p>
           <input
             onChange={(e) => handle(e)}
             id="password"
             value={data.password}
-            placeholder="password"
+            placeholder="********"
             type="password"
           ></input>
-          <button className="button">Submit</button>
+          <button className="buttonsubmit">Submit</button>
+          <p className='gosignup'>Don't have an account? Sign up now!</p>
         </form>
       </div>
       <img src={loghero} alt="Login Hero" className="herolog"></img>
