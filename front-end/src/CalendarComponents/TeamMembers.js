@@ -1,5 +1,7 @@
 export default function TeamWidget(){
     return (
-        <h2>Contacts</h2>
+        <div className="teaminvite">
+            <h4>Contacts</h4>
+        </div>
     )
 }

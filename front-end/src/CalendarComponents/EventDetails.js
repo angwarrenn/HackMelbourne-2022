@@ -1,5 +1,7 @@
 export default function EventWidget(){
     return (
-        <h2>Details</h2>
+        <div className="editevent">
+            <h4>Details</h4>
+        </div>
     )
 }

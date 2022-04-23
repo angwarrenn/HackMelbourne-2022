@@ -1,5 +1,7 @@
 export default function AddContact(){
     return(
-        <h2>Add People</h2>
+        <div className="contactwidget">
+            <h4>Add People</h4>
+        </div>
     )
 }

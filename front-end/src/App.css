@@ -162,3 +162,82 @@ nav li a:focus{
   border-radius: 13px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.calendarwidget{
+
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  
+  margin: 20px;
+  padding: 15px;
+
+  width: 50%;
+  height: 650px;
+  
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.editevent{
+  margin: 20px;
+  padding: 15px;
+
+  width: 350px;
+  height: 250px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.teaminvite{
+  margin: 20px;
+  padding: 15px;
+
+  width: 350px;
+  height: 250px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.addevent{
+  margin: 20px;
+  padding: 15px;
+
+  width: 300px;
+  height: 100px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.eventdetails{
+  margin: 20px;
+  padding: 15px;
+
+  width: 300px;
+  height: 260px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contactwidget{
+  margin: 20px;
+  padding: 15px;
+
+  width: 300px;
+  height: 250px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
