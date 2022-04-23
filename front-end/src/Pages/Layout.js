@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { IoHome, IoCalendar, IoDuplicate, IoCog } from "react-icons/io5";
 
-const Layout = ({ email }) => {
+const Layout = ({ email, setEmail }) => {
   return (
     <div className="main">
       <nav className="navbar">
@@ -27,8 +27,17 @@ const Layout = ({ email }) => {
             </Link>
           </li>
           <li>
-            <Link to="/signup">
+            <div
+              onClick={() => {
+                setEmail(null);
+              }}
+            >
               <IoCog /> Sign Out
+            </div>
+          </li>
+          <li>
+            <Link to="/event">
+              <IoCog /> Event
             </Link>
           </li>
         </ul>

@@ -9,6 +9,8 @@ import NoPage from "./Pages/NoPage";
 import Settings from "./Pages/Settings";
 import LogIn from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
+import Events from "./Pages/Events";
+
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
@@ -25,7 +27,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={email ? <Layout /> : undefined}>
+        <Route
+          path="/"
+          element={
+            email ? <Layout email={email} setEmail={setEmail} /> : undefined
+          }
+        >
           <Route
             index
             element={
@@ -68,6 +75,11 @@ export default function App() {
               )
             }
           />
+          <Route
+            path="event"
+            element={email ? <Events email={email}/> : <Navigate to="/login" />}
+          />
+          
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
