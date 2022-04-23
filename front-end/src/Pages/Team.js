@@ -5,6 +5,7 @@ import {
   EventWidget,
   EventDets,
   ContactWidget,
+  AddMeetTime,
 } from '../ScheduleComponents/ScheduleIndex'
 
 const Team = () => {
@@ -13,6 +14,7 @@ const Team = () => {
         <EventWidget />
         <EventDets />
         <ContactWidget />
+        <AddMeetTime />
       </Fragment>
     )
   };
