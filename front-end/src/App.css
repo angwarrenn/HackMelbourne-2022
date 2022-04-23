@@ -8,13 +8,20 @@
 
 h1 {font-size: 40px;}
 h3 {font-size: 23px; 
+  text-align: center;
   display: inline;}
 h2 {font-size: 15px; 
   padding-right: 15px;
   vertical-align: middle;
-  margin-bottom: 65px;
+  margin-bottom: 60px;
   display: inline-block;}
+
+h5 {font-size: 20px;
+  text-align: center;}
+h6 {font-size: 40px;
+    text-align: center;}
 p {font-size: 14px;}
+
 
 
 input[type="text"],
@@ -51,6 +58,21 @@ input[type="date"] {
   color: #3A3E59;
 
   box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+input[type="notes"] {
+  margin: 10px;
+  padding: 15px;
+  height: 20px;
+  width: 200px;
+  border-color: #3A3E59;
+  border-width: thin;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 5px;
+
+  color: #3A3E59;
 }
 
 .buttonsubmit {
