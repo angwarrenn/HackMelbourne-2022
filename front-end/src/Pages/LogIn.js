@@ -43,7 +43,7 @@ function LogIn({ setEmail }) {
             onChange={(e) => handle(e)}
             id="email"
             value={data.email}
-            placeholder="duolingowong@gmail.com"
+            placeholder="abcdefgh@when.com"
             type="text"
           ></input>
           <p className="password">password</p>
