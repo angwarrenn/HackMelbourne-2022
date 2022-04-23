@@ -11,8 +11,59 @@ h3 {font-size: 23px;}
 p {font-size: 14px;}
 
 
-input {
-  border: 2px solid red !important;
+input[type="text"],
+input[type="password"] {
+  margin: 30px;
+  padding: 18px;
+  height: 40px;
+  width: 350px;
+  border: none;
+  margin-top: 0px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 15px;
+
+  color: white;
+
+  box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+input[type="name"] {
+  background-image: url("./DashboardComponents/logoname.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  margin: 30px;
+  padding: 18px;
+  height: 40px;
+  width: 350px;
+  border: none;
+  margin-top: 20px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 15px;
+
+  color: white;
+
+  box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+.buttonsubmit {
+  margin: 30px;
+  padding: 10px;
+  height: 60px;
+  width: 380px;
+  border: none;
+  background-color: #283560;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 15px;
+
+  color: white;
+
+  box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.1);
 }
 
 .sec_p {
@@ -254,6 +305,11 @@ nav li a:focus{
   width: 50%;
 }
 
+.login, .signup {
+  margin-top: 150px;
+}
+
+
 .login, .signup{
   right: 0;
   text-align: center;
@@ -266,6 +322,20 @@ nav li a:focus{
   overflow: hidden;
 }
 
+.email{
+  font-size: 20px;
+  margin-right: 300px;
+  margin-bottom: 0px;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.password{
+  font-size: 20px;
+  margin-right: 260px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  font-weight: bold;
 .editname, .editemail{
   margin: 20px;
   padding: 15px;
