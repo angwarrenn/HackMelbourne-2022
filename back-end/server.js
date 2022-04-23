@@ -30,7 +30,7 @@ app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  const sql = `SELECT password FROM user WHERE email='${email}'`;
+  const sql = `SELECT Password FROM user WHERE Email='${email}'`;
 
   connection.query(sql, (err, result) => {
     if (err) {
@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
       return;
     }
 
-    const hash = result[0].password;
+    const hash = result[0].Password;
 
     bcrypt.compare(password, hash, (err, result) => {
       if (err) {
@@ -68,7 +68,7 @@ app.post("/signup", (req, res) => {
         return;
       }
 
-      const sql = `INSERT INTO user (email, password) VALUES ('${email}','${hash}')`;
+      const sql = `INSERT INTO user (Email, Password) VALUES ('${email}','${hash}')`;
 
       connection.query(sql, (err) => {
         if (err) {
@@ -85,10 +85,11 @@ app.post("/signup", (req, res) => {
 app.post("/create-event", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
+  const users = req.body.users;
 
   const email = req.body.email;
 
-  const sql = `SELECT password FROM user WHERE email='${email}'`;
+  const sql = `INSERT INTO user (Email, Password) VALUES ('${email}','${hash}')`;
 
   res.json({ success: true });
 });
@@ -96,7 +97,7 @@ app.post("/create-event", (req, res) => {
 app.post("/retrieve-events", (req, res) => {
   const email = req.body.email;
 
-  const sql = `SELECT password FROM user WHERE email='${email}'`;
+  const sql = `SELECT * FROM events WHERE email='${email}'`;
 
   res.json({ success: true });
 });
