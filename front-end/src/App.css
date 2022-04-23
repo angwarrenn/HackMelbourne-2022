@@ -58,6 +58,7 @@ input[type="name"] {
   background-attachment: fixed;
   background-position: center;
   border-radius: 15px;
+  cursor:pointer;
 
   color: white;
 
@@ -93,7 +94,7 @@ input[type="name"] {
   margin:15px 10px 15px 10px;
   padding: 10px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #9C9FAC;
   display: block;
@@ -138,8 +139,6 @@ nav li a:focus {
 .quotebox {
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
   background-image: url("./DashboardComponents/quotebox.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -162,8 +161,6 @@ nav li a:focus {
 .widgetCurrPro{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 
@@ -173,8 +170,6 @@ nav li a:focus {
 .friendswidget{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 
@@ -184,8 +179,6 @@ nav li a:focus {
 .noteswidget{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 

@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import loghero from "./loginhero.png";
 
 function LogIn({ email, setEmail }) {
-  const url = "https://a7d5-125-63-30-143.au.ngrok.io/login";
+  const url = "https://2692-125-63-30-25.au.ngrok.io/login";
   const [data, setData] = useState({
     email: "",
     password: "",
