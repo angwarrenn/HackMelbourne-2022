@@ -1,5 +1,7 @@
 export default function TodaySched(){
     return(
-        <h2>Schedule</h2>
+        <div className="todayschedule">
+            <h4>Schedule</h4>
+        </div>
     )
 }

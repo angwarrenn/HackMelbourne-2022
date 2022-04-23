@@ -1,5 +1,7 @@
 export default function FriendsWidget(){
     return (
-        <h2>Friends</h2>
+        <div className="friendswidget">
+            <h4>Friends</h4>
+        </div>
     )
 }

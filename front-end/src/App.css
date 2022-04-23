@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@200;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 * {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 h1 {font-size: 40px;}
-h3 {font-size: 25px;}
+h3 {font-size: 23px;}
 
-p {font-size: 16px};
+p {font-size: 14px};
 
 .sec_p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .third_p{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* The sidebar menu */
@@ -32,6 +32,7 @@ p {font-size: 16px};
 
   border-right: solid;
   border-color: #9C9FAC;
+  border-width: 1.5px;
 }
 
 /* The navigation menu links */
@@ -46,7 +47,7 @@ p {font-size: 16px};
 }
 
 nav li a:hover,
-nav li a.active{
+nav li a:focus{
   color: #F38B60;
   background-color: #FCD5B3;
   border-radius: 13px;
@@ -69,12 +70,95 @@ nav li a.active{
   right: 0;
   height: 100%;
   width: 300px;
-  background-color: gray;
+  background-color: #F7F7F7;
   padding: 10px 25px;
+  padding-top: 25px;
 }
 
 .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.quotebox {
+  margin: 20px;
+  padding: 15px;
+  height: 100px;
+  width: 550px;
+  background-image: url("./DashboardComponents/quotebox.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 13px;
+
+  color: white;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.quote {
+  font-style: italic;
+}
+
+.quoteauthor{
+  text-align: right;
+}
+
+.widgetCurrPro{
+  margin: 20px;
+  padding: 15px;
+  height: 100px;
+  width: 550px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.friendswidget{
+  margin: 20px;
+  padding: 15px;
+  height: 100px;
+  width: 550px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.noteswidget{
+  margin: 20px;
+  padding: 15px;
+  height: 100px;
+  width: 550px;
+
+  border-radius: 13px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todolist{
+  margin: 20px;
+  padding: 15px;
+
+  background-image: url("./DashboardComponents/todobox.png");
+  background-position: center;
+
+  color: white;
+
+  width: 235px;
+  height: 250px;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.todayschedule{
+  margin: 20px;
+  padding: 15px;
+
+  width: 235px;
+  height: 350px;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
