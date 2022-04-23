@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Empty from "./Pages/Empty";
 import Layout from "./Pages/Layout";
 import Dashboard from "./Pages/Dashboard";
 import Calendar from "./Pages/Calendar";
@@ -44,14 +45,38 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout email={email} />}>
-          <Route index element={<Dashboard />} />
-          <Route path="calendar" element={<Calendar />} />
-          <Route path="team" element={<Team />} />
-          <Route path="settings" element={<Settings />} />
+        <Route path="/" element={email ? <Layout /> : <Empty />}>
+          <Route
+            index
+            element={
+              email ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="calendar"
+            element={email ? <Calendar /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="team"
+            element={email ? <Team /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="settings"
+            element={email ? <Settings /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="dashboard"
+            element={email ? <Dashboard /> : <Navigate to="/login" />}
+          />
           <Route
             path="login"
-            element={<LogIn email={email} set-email={setEmail} />}
+            element={
+              email ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <LogIn email={email} setEmail={setEmail} />
+              )
+            }
           />
           <Route path="signup" element={<SignUp />} />
           <Route path="*" element={<NoPage />} />

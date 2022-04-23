@@ -27,13 +27,8 @@ const Layout = ({ email }) => {
             </Link>
           </li>
           <li>
-            <Link to="/login">
-              <IoCog /> Log In
-            </Link>
-          </li>
-          <li>
             <Link to="/signup">
-              <IoCog /> Sign Up
+              <IoCog /> Sign Out
             </Link>
           </li>
         </ul>
