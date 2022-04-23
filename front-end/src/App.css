@@ -332,8 +332,8 @@ nav li a:focus {
 
     position: fixed;
     z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    right: 0;
+    top: 0px; /* Stay at the top */
+    left: 181px;
     
     margin: 20px;
     padding: 30px;
@@ -341,9 +341,6 @@ nav li a:focus {
     width: 53%;
     height: 650px;
     
-    border-radius: 13px;
-  
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
 
 .contactwidget{

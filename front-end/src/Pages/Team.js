@@ -14,7 +14,6 @@ const Team = () => {
         <EventWidget />
         <EventDets />
         <ContactWidget />
-        <AddMeetTime />
       </Fragment>
     )
   };

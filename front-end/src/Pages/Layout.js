@@ -17,11 +17,6 @@ const Layout = ({ email, setEmail }) => {
             </Link>
           </li>
           <li>
-            <Link to="/team">
-              <IoDuplicate /> Add Schedule{" "}
-            </Link>
-          </li>
-          <li>
             <Link to="/event">
               <IoCreate /> Event
             </Link>
