@@ -27,7 +27,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={email ? <Layout /> : undefined}>
+        <Route
+          path="/"
+          element={
+            email ? <Layout email={email} setEmail={setEmail} /> : undefined
+          }
+        >
           <Route
             index
             element={
