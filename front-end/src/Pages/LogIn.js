@@ -5,7 +5,7 @@ import Axios from "axios";
 import logHero from "./loginhero.png";
 
 function LogIn({ setEmail }) {
-  const url = "https://a7d5-125-63-30-143.au.ngrok.io/login";
+  const url = process.env.REACT_APP_SERVER + "/login";
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -29,7 +29,6 @@ function LogIn({ setEmail }) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
     setData(newdata);
-    console.log(newdata);
   };
 
   return (
