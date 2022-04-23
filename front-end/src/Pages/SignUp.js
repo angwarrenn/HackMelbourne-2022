@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-import loghero from './loginhero.png';
+import signhero from './signuphero.png';
 
-function LogIn(){
-  const url = "https://a7d5-125-63-30-143.au.ngrok.io/login"
+function SignUp(){
+  const url = "https://a7d5-125-63-30-143.au.ngrok.io/signup"
   const [data,setData] = useState({
     email:"",
     password: "",
@@ -29,17 +29,17 @@ function LogIn(){
   }
   return(
     <div>
-      <div className='login'>
-        <h1>LOGIN</h1>
+      <div className='signup'>
+        <h1>SIGN UP</h1>
         <form onSubmit={(e)=> submit(e)}>
           <input onChange={(e)=>handle(e)} id ="email" value = {data.email} placeholder='email' type="text"></input>
           <input onChange={(e)=>handle(e)} id ="password" value = {data.password} placeholder='password' type="password"></input>
-          <button className='button'>Submit</button>
+          <button>Submit</button>
         </form>
       </div>
-      <img src={ loghero } alt="Login Hero" className='herolog'></img>
+      <img src={ signhero } alt="Signup Hero" className='herosign'></img>
     </div>
   );
 }
 
-export default LogIn;
+export default SignUp;

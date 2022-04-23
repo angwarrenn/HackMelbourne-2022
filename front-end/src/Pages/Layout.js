@@ -22,6 +22,14 @@ const Layout = () => {
               <Link to="/settings">
                   <IoCog /> Settings</Link>
             </li>
+            <li>
+              <Link to="/login">
+                  <IoCog /> Log In</Link>
+            </li>
+            <li>
+              <Link to="/signup">
+                  <IoCog /> Sign Up</Link>
+            </li>
           </ul>
         </nav>
         <Outlet />

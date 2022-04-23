@@ -6,6 +6,9 @@ import Calendar from "./Pages/Calendar";
 import Team from "./Pages/Team";
 import NoPage from "./Pages/NoPage";
 import Settings from "./Pages/Settings";
+import LogIn from "./Pages/LogIn";
+import SignUp from "./Pages/SignUp";
+
 import "./App.css";
 
 export default function App() {
@@ -17,6 +20,8 @@ export default function App() {
           <Route path="calendar" element={<Calendar />} />
           <Route path="team" element={<Team />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="login" element={<LogIn />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
@@ -26,5 +31,3 @@ export default function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-//testing tersting

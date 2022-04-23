@@ -8,7 +8,6 @@
 
 h1 {font-size: 40px;}
 h3 {font-size: 23px;}
-
 p {font-size: 14px};
 
 .sec_p {
@@ -241,3 +240,24 @@ nav li a:focus{
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.herolog, .login, .herosign, .signup{
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 50%;
+}
+
+.login, .signup{
+  right: 0;
+  text-align: center;
+}
+
+.herolog, .herosign{
+  left: 0;
+  width: 59%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
