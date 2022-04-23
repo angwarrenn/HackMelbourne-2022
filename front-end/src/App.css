@@ -336,6 +336,8 @@ nav li a:focus{
   margin-bottom: 0px;
   margin-top: 10px;
   font-weight: bold;
+}
+
 .editname, .editemail{
   margin: 20px;
   padding: 15px;
