@@ -1,11 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
 import { IoHome, IoCalendar, IoDuplicate, IoCreate, IoLogOut } from "react-icons/io5";
+import logowhen from './when.png';
 
 const Layout = ({ email, setEmail }) => {
   return (
     <div className="main">
       <nav className="navbar">
         <ul>
+        <img src={ logowhen } alt="logo" className="logowhen"/>
           <li>
             <Link to="/">
               <IoHome /> Dashboard
@@ -14,11 +16,6 @@ const Layout = ({ email, setEmail }) => {
           <li>
             <Link to="/calendar">
               <IoCalendar /> Calendar
-            </Link>
-          </li>
-          <li>
-            <Link to="/team">
-              <IoDuplicate /> Add Schedule{" "}
             </Link>
           </li>
           <li>

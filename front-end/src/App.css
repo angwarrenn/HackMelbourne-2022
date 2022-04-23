@@ -8,13 +8,20 @@
 
 h1 {font-size: 40px;}
 h3 {font-size: 23px; 
+  text-align: center;
   display: inline;}
 h2 {font-size: 15px; 
   padding-right: 15px;
   vertical-align: middle;
-  margin-bottom: 65px;
+  margin-bottom: 60px;
   display: inline-block;}
+
+h5 {font-size: 20px;
+  text-align: center;}
+h6 {font-size: 40px;
+    text-align: center;}
 p {font-size: 14px;}
+
 
 
 input[type="text"],
@@ -51,6 +58,21 @@ input[type="date"] {
   color: #3A3E59;
 
   box-shadow: 20px 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+input[type="notes"] {
+  margin: 10px;
+  padding: 15px;
+  height: 20px;
+  width: 200px;
+  border-color: #3A3E59;
+  border-width: thin;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 5px;
+
+  color: #3A3E59;
 }
 
 .buttonsubmit {
@@ -159,6 +181,13 @@ nav li a:focus {
   padding: 5px;
   width: 55px;
   height: 60px;
+  border-radius: 20%;
+}
+
+.logowhen {
+  padding: 5px;
+  height: 100px;
+  margin-left: 22px;
   border-radius: 20%;
 }
 
@@ -310,8 +339,8 @@ nav li a:focus {
 
     position: fixed;
     z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    right: 0;
+    top: 0px; /* Stay at the top */
+    left: 181px;
     
     margin: 20px;
     padding: 30px;
@@ -319,9 +348,6 @@ nav li a:focus {
     width: 53%;
     height: 650px;
     
-    border-radius: 13px;
-  
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
 
 .contactwidget{

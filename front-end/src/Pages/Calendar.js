@@ -3,17 +3,18 @@ import { Fragment } from "react";
 //importing components
 import {
   CalendarWidget,
-  EventDetails,
-  TeamMembers,
 
 } from '../CalendarComponents/CalComponents'
+
+import {
+  AddMeetTime,
+} from '../ScheduleComponents/ScheduleIndex'
 
 const Calendar = () => {
     return (
       <Fragment>
         <CalendarWidget />
-        <EventDetails />
-        <TeamMembers />
+        <AddMeetTime />
       </Fragment>
     )
   };

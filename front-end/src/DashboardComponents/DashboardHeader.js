@@ -5,7 +5,7 @@ export default function DashboardHeader() {
         <div class="grid-item item1">
             <img src={ avatar } alt="Avatar" className="avatar"/>
             <p className="third_p">Hello,</p>
-            <h3>Duolingo Wong!</h3>
+            <h3>Lucas Grayson!</h3>
         </div>
     )}
   
