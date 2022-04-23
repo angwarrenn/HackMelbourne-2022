@@ -43,7 +43,7 @@ export default function AddMeetTime() {
 
     const ENDPOINT = process.env.REACT_APP_SERVER;
     const socket = io(ENDPOINT, {
-      query: { id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
+      query: { id: "4c6eb9d8-078c-4a4d-9f58-7f464b32d464" },
     });
 
     if (socket) {
