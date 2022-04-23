@@ -45,7 +45,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={email ? <Layout /> : <Empty />}>
+        <Route path="/" element={email ? <Layout /> : undefined}>
           <Route
             index
             element={
