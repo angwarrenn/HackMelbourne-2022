@@ -207,10 +207,10 @@ io.on("connection", (socket) => {
   //   console.log("user disconnected");
   // });
 
-  socket.on("vote", (body) => {
-    body = JSON.parse(body);
+  socket.on("remove-vote", (body) => {
+    console.log(body);
 
-    let sql = `INSERT INTO userrecordeventtime (UserEmail, EventTimeID, EventID) VALUES ('${body.email}','${body.time}','${eventId}')`;
+    let sql = `UPDATE eventtime SET count = count - 1 WHERE EventID='${eventId}' AND  ID='${body.time}'`;
 
     connection.query(sql, (err, result) => {
       if (err) {
@@ -218,7 +218,29 @@ io.on("connection", (socket) => {
         return;
       }
 
-      sql = `SELECT * FROM userrecordeventtime WHERE EventID='${eventId}'`;
+      sql = `SELECT * FROM eventtime WHERE EventID='${eventId}'`;
+      connection.query(sql, (err, result) => {
+        if (err) {
+          io.to(eventId).emit("update", { success: false, error: err });
+        } else {
+          io.to(eventId).emit("update", { success: true, result: result });
+        }
+      });
+    });
+  });
+
+  socket.on("vote", (body) => {
+    console.log(body);
+
+    let sql = `UPDATE eventtime SET count = count + 1 WHERE EventID='${eventId}' AND  ID='${body.time}'`;
+
+    connection.query(sql, (err, result) => {
+      if (err) {
+        io.to(eventId).emit("update", { success: false, error: err });
+        return;
+      }
+
+      sql = `SELECT * FROM eventtime WHERE EventID='${eventId}'`;
       connection.query(sql, (err, result) => {
         if (err) {
           io.to(eventId).emit("update", { success: false, error: err });

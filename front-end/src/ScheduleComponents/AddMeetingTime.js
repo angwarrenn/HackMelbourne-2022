@@ -1,37 +1,117 @@
-export default function AddMeetTime(){
-    return(
-        <div className="meettime">
-            <table>
-            <tr>
-                <th colspan="2">You</th>
-                <th>Group</th>
-            </tr>
-            <tr> <td>00:00</td> <td></td> <td>00:00</td> <td></td> </tr>
-            <tr> <td>01:00</td> <td></td> <td>01:00</td> <td></td> </tr>
-            <tr> <td>02:00</td> <td></td> <td>02:00</td> <td></td>  </tr>
-            <tr> <td>03:00</td> <td></td> <td>03:00</td> <td></td> </tr>
-            <tr> <td>04:00</td> <td></td> <td>04:00</td> <td></td> </tr>
-            <tr> <td>05:00</td> <td></td> <td>05:00</td> <td></td> </tr>
-            <tr> <td>06:00</td> <td></td> <td>06:00</td> <td></td> </tr>
-            <tr> <td>07:00</td> <td></td> <td>07:00</td> <td></td> </tr>
-            <tr> <td>08:00</td> <td></td> <td>08:00</td> <td></td> </tr>
-            <tr> <td>09:00</td> <td></td> <td>09:00</td> <td></td> </tr>
-            <tr> <td>10:00</td> <td></td> <td>10:00</td> <td></td> </tr>
-            <tr> <td>11:00</td> <td></td> <td>11:00</td> <td></td> </tr>
-            <tr> <td>12:00</td> <td></td> <td>12:00</td> <td></td> </tr>
-            <tr> <td>13:00</td> <td></td> <td>13:00</td> <td></td> </tr>
-            <tr> <td>14:00</td> <td></td> <td>14:00</td> <td></td> </tr>
-            <tr> <td>15:00</td> <td></td> <td>15:00</td> <td></td> </tr>
-            <tr> <td>16:00</td> <td></td> <td>16:00</td> <td></td> </tr>
-            <tr> <td>17:00</td> <td></td> <td>17:00</td> <td></td> </tr>
-            <tr> <td>18:00</td> <td></td> <td>18:00</td> <td></td> </tr>
-            <tr> <td>19:00</td> <td></td> <td>19:00</td> <td></td> </tr>
-            <tr> <td>20:00</td> <td></td> <td>20:00</td> <td></td> </tr>
-            <tr> <td>21:00</td> <td></td> <td>21:00</td> <td></td> </tr>
-            <tr> <td>22:00</td> <td></td> <td>22:00</td> <td></td> </tr>
-            <tr> <td>23:00</td> <td></td> <td>23:00</td> <td></td> </tr>
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
-            </table>
-        </div>
-    )
+export default function AddMeetTime() {
+  const [responses, setResponses] = useState([
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+    { count: 0 },
+  ]);
+  const [socket, setSocket] = useState(null);
+
+  const [count, setCount] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
+
+  const [self, setSelf] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
+
+  useEffect(() => {
+    console.log("useEffect called");
+
+    const ENDPOINT = process.env.REACT_APP_SERVER;
+    const socket = io(ENDPOINT, {
+      query: { id: "9eab9fd0-4f39-4d97-88a6-3013c151c7a3" },
+    });
+
+    if (socket) {
+      setSocket(socket);
+
+      socket.emit("init");
+
+      socket.on("update", (data) => {
+        console.log(data.result);
+        setResponses(data.result);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    setCount([]);
+    for (let i = 0; i < 24; i++) {
+      setCount((prev) => [...prev, responses[i].count]);
+    }
+  }, [responses]);
+
+  const handler = (i) => {
+    let idk = [...self];
+
+    if (idk[i] == 0) {
+      socket.emit("vote", { time: i });
+      idk[i] = 1;
+      setSelf(idk);
+    } else {
+      socket.emit("remove-vote", { time: i });
+      idk[i] = 0;
+      setSelf(idk);
+    }
+  };
+
+  const loop = () => {
+    let arr = [];
+
+    for (let i = 0; i < 24; i++) {
+      const style = { backgroundColor: "green", opacity: 0.1 * count[i] };
+
+      arr.push(
+        <tr>
+          <td>{i}</td>
+          <td
+            style={{ backgroundColor: "green", opacity: 0.5 * self[i] }}
+            onClick={() => {
+              handler(i);
+            }}
+          ></td>
+          <td>{i}</td>
+          <td style={style}></td>
+        </tr>
+      );
+    }
+
+    return arr;
+  };
+
+  return (
+    <div className="meettime">
+      <table>
+        <tr>
+          <th colSpan="2">You</th>
+          <th>Group</th>
+        </tr>
+        {loop()}
+      </table>
+    </div>
+  );
 }
