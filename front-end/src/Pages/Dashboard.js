@@ -13,7 +13,6 @@ import {
 const Home = () => {
     return(
         <Fragment>
-            <h1>Dashboard</h1>
             <DashboardHeader />
             <QuoteWidget />
             <CurrentProjects />

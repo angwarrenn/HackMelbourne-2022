@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { BiHome, BiCalendar, BiAddToQueue, BiCog} from "react-icons/bi";
+import { IoHome, IoCalendar, IoDuplicate, IoCog} from "react-icons/io5";
 
 const Layout = () => {
     return (
@@ -8,19 +8,19 @@ const Layout = () => {
           <ul>
             <li>
               <Link to="/">
-                <BiHome /> Dashboard</Link>
+                <IoHome /> Dashboard</Link>
             </li>
             <li>
               <Link to="/calendar">
-                  <BiCalendar /> Calendar</Link>
+                  <IoCalendar /> Calendar</Link>
             </li>
             <li>
               <Link to="/team">
-                  <BiAddToQueue /> Add Schedule </Link>
+                  <IoDuplicate /> Add Schedule </Link>
             </li>
             <li>
               <Link to="/settings">
-                  <BiCog /> Settings</Link>
+                  <IoCog /> Settings</Link>
             </li>
           </ul>
         </nav>

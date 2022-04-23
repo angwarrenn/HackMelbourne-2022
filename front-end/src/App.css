@@ -7,6 +7,8 @@
 }
 
 h1 {font-size: 40px;}
+h3 {font-size: 25px;}
+
 p {font-size: 16px};
 
 .sec_p {
@@ -14,39 +16,44 @@ p {font-size: 16px};
 }
 
 .third_p{
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* The sidebar menu */
 .navbar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
+  width: 225px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+
+  border-right: solid;
+  border-color: #9C9FAC;
 }
 
 /* The navigation menu links */
 .navbar a {
-  margin-left: 10px;
+  margin:15px 10px 15px 10px;
   padding: 10px;
   text-decoration: none;
-  font-size: 16px;
-  color: #818181;
+  font-size: 20px;
+  font-weight: bold;
+  color: #9C9FAC;
   display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
-.navbar a:hover {
-  color: #f1f1f1;
+nav li a:hover,
+nav li a.active{
+  color: #F38B60;
+  background-color: #FCD5B3;
+  border-radius: 13px;
 }
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidebar */
+  margin-left: 225px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
 
@@ -66,3 +73,8 @@ p {font-size: 16px};
   padding: 10px 25px;
 }
 
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
