@@ -7,6 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// cors
+const cors = require("cors");
+app.use(cors());
+
 // initialize mysql connection
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
@@ -25,6 +29,9 @@ connection.connect((err) => {
 
 // bcrypt library
 const bcrypt = require("bcrypt");
+
+// uuid library
+const { v4: uuidv4 } = require("uuid");
 
 app.post("/login", (req, res) => {
   const email = req.body.email;
@@ -82,24 +89,46 @@ app.post("/signup", (req, res) => {
   );
 });
 
+const createEventUsersRecord = (users, event) => {
+  const sql = `INSERT INTO eventusers (UserEmail, EventID) VALUES ('','')`;
+};
+
 app.post("/create-event", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
-  const users = req.body.users;
+  const createdBy = req.body.email;
 
-  const email = req.body.email;
+  const id = uuidv4();
 
-  const sql = `INSERT INTO user (Email, Password) VALUES ('${email}','${hash}')`;
+  const sql = `INSERT INTO event (ID, Name, Description, CreatedBy) VALUES ('${id}','${name}','${description}','${createdBy}')`;
 
-  res.json({ success: true });
+  connection.query(sql, (err) => {
+    if (err) {
+      res.json({ success: false, error: err });
+    } else {
+      res.json({ success: true });
+    }
+  });
+
+  // const users = req.body.users;
+  //
+  // users.forEach();
+  //
+  // const email = req.body.email;
 });
 
 app.post("/retrieve-events", (req, res) => {
   const email = req.body.email;
 
-  const sql = `SELECT * FROM events WHERE email='${email}'`;
+  const sql = `SELECT * FROM event WHERE CreatedBy='${email}'`;
 
-  res.json({ success: true });
+  connection.query(sql, (err, result) => {
+    if (err) {
+      res.json({ success: false, error: err });
+    } else {
+      res.json({ success: true, result: result });
+    }
+  });
 });
 
 app.listen(process.env.PORT, (err) => {
