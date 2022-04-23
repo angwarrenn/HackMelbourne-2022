@@ -89,10 +89,6 @@ app.post("/signup", (req, res) => {
   );
 });
 
-const createEventUsersRecord = (users, event) => {
-  const sql = `INSERT INTO eventusers (UserEmail, EventID) VALUES ('','')`;
-};
-
 app.post("/create-event", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
@@ -100,7 +96,25 @@ app.post("/create-event", (req, res) => {
 
   const id = uuidv4();
 
-  const sql = `INSERT INTO event (ID, Name, Description, CreatedBy) VALUES ('${id}','${name}','${description}','${createdBy}')`;
+  let sql = `INSERT INTO event (ID, Name, Description, CreatedBy) VALUES ('${id}','${name}','${description}','${createdBy}')`;
+
+  connection.query(sql, (err) => {
+    if (err) {
+      res.json({ success: false, error: err });
+    }
+  });
+
+  const users = req.body.users;
+
+  sql = "INSERT INTO eventusers (UserEmail, EventID) VALUES";
+
+  for (let i = 0; i < users.length; i++) {
+    sql += ` ('${users[i]}', '${id}')`;
+
+    if (i < users.length - 1) {
+      sql += ",";
+    }
+  }
 
   connection.query(sql, (err) => {
     if (err) {
@@ -109,12 +123,6 @@ app.post("/create-event", (req, res) => {
       res.json({ success: true });
     }
   });
-
-  // const users = req.body.users;
-  //
-  // users.forEach();
-  //
-  // const email = req.body.email;
 });
 
 app.post("/retrieve-events", (req, res) => {
