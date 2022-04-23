@@ -1,15 +1,29 @@
 // environment variables library
 require("dotenv").config();
 
-// setup express app and middlewares
+// setup express app
 const express = require("express");
 const app = express();
+
+// body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // cors
 const cors = require("cors");
 app.use(cors());
+
+// initialize server
+const server = app.listen(process.env.PORT, (err) => {
+  if (err) {
+    throw err;
+  }
+  console.log(`listening on port ${process.env.PORT}`);
+});
+
+// socket io
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 // initialize mysql connection
 const mysql = require("mysql2");
@@ -139,10 +153,17 @@ app.post("/retrieve-events", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT, (err) => {
-  if (err) {
-    throw err;
-  }
+io.on("connection", (socket) => {
+  console.log("user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
 
-  console.log(`listening on port ${process.env.PORT}`);
+  socket.on("update", (obj) => {
+    console.log("update: " + obj);
+  });
+
+  socket.on("update", (obj) => {
+    io.emit("update", obj);
+  });
 });
