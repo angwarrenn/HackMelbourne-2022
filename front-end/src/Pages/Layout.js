@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { IoHome, IoCalendar, IoDuplicate, IoCog } from "react-icons/io5";
+import { IoHome, IoCalendar, IoDuplicate, IoCreate, IoLogOut } from "react-icons/io5";
 
 const Layout = ({ email, setEmail }) => {
   return (
@@ -22,23 +22,18 @@ const Layout = ({ email, setEmail }) => {
             </Link>
           </li>
           <li>
-            <Link to="/settings">
-              <IoCog /> Settings
+            <Link to="/event">
+              <IoCreate /> Event
             </Link>
           </li>
           <li>
-            <div
+            <div className="signoutbutton"
               onClick={() => {
                 setEmail(null);
               }}
             >
-              <IoCog /> Sign Out
+              <IoLogOut /> Sign Out
             </div>
-          </li>
-          <li>
-            <Link to="/event">
-              <IoCog /> Event
-            </Link>
           </li>
         </ul>
       </nav>
