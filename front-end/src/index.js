@@ -77,9 +77,15 @@ export default function App() {
           />
           <Route
             path="event"
-            element={email ? <Events email={email}/> : <Navigate to="/login" />}
+            element={
+              email ? (
+                <Events email={email} setEmail={setEmail} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
           />
-          
+
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
