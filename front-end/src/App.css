@@ -503,9 +503,11 @@ table {
   width: 400px;
   height: 150px;
 
-  padding: 10px;
+  padding: 30px;
   margin: 20px;
   margin-left: 50px;
+
+  border-radius: 13px;
   
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); 
 }
