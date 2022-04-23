@@ -57,6 +57,7 @@ input[type="name"] {
   background-attachment: fixed;
   background-position: center;
   border-radius: 15px;
+  cursor:pointer;
 
   color: white;
 
@@ -92,7 +93,7 @@ input[type="name"] {
   margin:15px 10px 15px 10px;
   padding: 10px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #9C9FAC;
   display: block;
@@ -136,8 +137,6 @@ nav li a:focus{
 .quotebox {
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
   background-image: url("./DashboardComponents/quotebox.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -160,8 +159,6 @@ nav li a:focus{
 .widgetCurrPro{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 
@@ -171,8 +168,6 @@ nav li a:focus{
 .friendswidget{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 
@@ -182,8 +177,6 @@ nav li a:focus{
 .noteswidget{
   margin: 20px;
   padding: 15px;
-  height: 100px;
-  width: 550px;
 
   border-radius: 13px;
 
@@ -374,4 +367,44 @@ nav li a:focus{
   border-radius: 13px;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grid-container{
+  display: grid;
+  gap: 15px;
+  padding: 10px;
+  grid-template-columns: 155px 155px 155px 155px 155px 155px;
+  grid-template-rows: 160px 160px 160px 160px;
+
+  height: 100%;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.item1{
+  grid-column: 1 / span 5;
+  grid-row: 1;
+}
+
+.quotebox{
+  grid-column: 1 / span 5;
+  grid-row: 2;
+}
+
+.widgetCurrPro{
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}
+
+.friendswidget{
+  grid-column: 3/ span 3;
+  grid-row: 3 / span 4;
+}
+
+.noteswidget{
+  grid-column: 1/ span 2;
+  grid-row: 4;
 }
