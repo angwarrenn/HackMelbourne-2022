@@ -1,6 +1,23 @@
 // environment variables library
 require("dotenv").config();
 
+// initialize mysql connection
+const mysql = require("mysql2");
+const connection = mysql.createConnection({
+  host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_PORT,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+});
+connection.connect((err) => {
+  if (err) {
+    throw err;
+  }
+
+  console.log("MySql Connected...");
+});
+
 // setup express app
 const express = require("express");
 const app = express();
@@ -18,6 +35,7 @@ const server = app.listen(process.env.PORT, (err) => {
   if (err) {
     throw err;
   }
+
   console.log(`listening on port ${process.env.PORT}`);
 });
 
@@ -25,21 +43,7 @@ const server = app.listen(process.env.PORT, (err) => {
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-// initialize mysql connection
-const mysql = require("mysql2");
-const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  port: process.env.MYSQL_PORT,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-});
-connection.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("MySql Connected...");
-});
+app.set("socketio", io);
 
 // bcrypt library
 const bcrypt = require("bcrypt");
@@ -56,6 +60,11 @@ app.post("/login", (req, res) => {
   connection.query(sql, (err, result) => {
     if (err) {
       res.json({ success: false, error: err });
+      return;
+    }
+
+    if (result.length === 0) {
+      res.json({ success: false });
       return;
     }
 
@@ -107,35 +116,53 @@ app.post("/create-event", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const createdBy = req.body.email;
+  const date = req.body.date;
+  const users = req.body.users;
 
   const id = uuidv4();
 
-  let sql = `INSERT INTO event (ID, Name, Description, CreatedBy) VALUES ('${id}','${name}','${description}','${createdBy}')`;
+  let sql = `INSERT INTO event (ID, Name, Description, CreatedBy, Date) VALUES ('${id}','${name}','${description}','${createdBy}', '${date}')`;
 
   connection.query(sql, (err) => {
     if (err) {
       res.json({ success: false, error: err });
+      return;
     }
-  });
 
-  const users = req.body.users;
+    sql = "INSERT INTO eventusers (UserEmail, EventID) VALUES";
 
-  sql = "INSERT INTO eventusers (UserEmail, EventID) VALUES";
+    for (let i = 0; i < users.length; i++) {
+      sql += ` ('${users[i]}', '${id}')`;
 
-  for (let i = 0; i < users.length; i++) {
-    sql += ` ('${users[i]}', '${id}')`;
-
-    if (i < users.length - 1) {
-      sql += ",";
+      if (i < users.length - 1) {
+        sql += ",";
+      }
     }
-  }
 
-  connection.query(sql, (err) => {
-    if (err) {
-      res.json({ success: false, error: err });
-    } else {
-      res.json({ success: true });
-    }
+    connection.query(sql, (err) => {
+      if (err) {
+        res.json({ success: false, error: err });
+        return;
+      }
+
+      sql = "INSERT INTO eventtime (ID, EventID) VALUES";
+
+      for (let i = 0; i < 24; i++) {
+        sql += ` ('${i}', '${id}')`;
+
+        if (i < 23) {
+          sql += ",";
+        }
+      }
+      connection.query(sql, (err) => {
+        if (err) {
+          res.json({ success: false, error: err });
+          return;
+        }
+
+        res.json({ success: true });
+      });
+    });
   });
 });
 
@@ -153,17 +180,48 @@ app.post("/retrieve-events", (req, res) => {
   });
 });
 
+app.post("/event-vote", (req, res) => {
+  const email = req.body.email;
+  const eventId = req.body.id;
+
+  const sql = `SELECT * FROM event WHERE CreatedBy='${email}'`;
+
+  connection.query(sql, (err, result) => {
+    if (err) {
+      res.json({ success: false, error: err });
+    } else {
+      res.json({ success: true, result: result });
+    }
+  });
+});
+
 io.on("connection", (socket) => {
-  console.log("user connected");
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
+  const eventId = socket.handshake.query.id;
+  socket.join(eventId);
 
-  socket.on("update", (obj) => {
-    console.log("update: " + obj);
-  });
+  // socket.on("disconnect", () => {
+  //   console.log("user disconnected");
+  // });
 
-  socket.on("update", (obj) => {
-    io.emit("update", obj);
+  socket.on("vote", (body) => {
+    body = JSON.parse(body);
+
+    let sql = `INSERT INTO userrecordeventtime (UserEmail, EventTimeID, EventID) VALUES ('${body.email}','${body.time}','${eventId}')`;
+
+    connection.query(sql, (err, result) => {
+      if (err) {
+        io.to(eventId).emit("update", { success: false, error: err });
+        return;
+      }
+
+      sql = `SELECT * FROM userrecordeventtime WHERE EventID='${eventId}'`;
+      connection.query(sql, (err, result) => {
+        if (err) {
+          io.to(eventId).emit("update", { success: false, error: err });
+        } else {
+          io.to(eventId).emit("update", { success: true, result: result });
+        }
+      });
+    });
   });
 });
