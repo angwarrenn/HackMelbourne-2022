@@ -31,13 +31,22 @@ function LogIn(){
     <div>
       <div className='login'>
         <h1>LOGIN</h1>
-        <form onSubmit={(e)=> submit(e)}>
-          <p className='email'>email</p>
-          <input onChange={(e)=>handle(e)} id ="email" value = {data.email} placeholder='abcdefg@gmail.com' type="text"></input>
-          <p className='password'>password</p>
-          <input onChange={(e)=>handle(e)} id ="password" value = {data.password} placeholder='********' type="password"></input>
-          <button className='buttonsubmit'>SUBMIT</button>
-          <p className='gosignup'>Don’t have an account? Sign up now!</p>
+        <form onSubmit={(e) => submit(e)}>
+          <input
+            onChange={(e) => handle(e)}
+            id="email"
+            value={data.email}
+            placeholder="email"
+            type="text"
+          ></input>
+          <input
+            onChange={(e) => handle(e)}
+            id="password"
+            value={data.password}
+            placeholder="password"
+            type="password"
+          ></input>
+          <button className="button">Submit</button>
         </form>
       </div>
       <img src={ loghero } alt="Login Hero" className='herolog'></img>
